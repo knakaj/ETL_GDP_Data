@@ -1,4 +1,4 @@
-# ETL_GDP_Data
+
 # IBM Python Practice Project For Data Engineering
 
 Objectives:
