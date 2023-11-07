@@ -34,7 +34,7 @@ def extract(url, table_attribs):
             if col[0].find('a') is not None and '—' not in col[2]:
                 data_dict = {"Country": col[0].a.contents[0], 
                              "GDP_USD_millions": col[2].contents[0]} #store all entries matching the conditions to a dictionary with keys same as entries in table_attrib 
-                df1 = pd.DateFrame(data_dict, index =[0]) #create a new dataframe with the data in the dictionary
+                df1 = pd.DataFrame(data_dict, index =[0]) #create a new dataframe with the data in the dictionary
                 df = pd.concat([df,df1], ignore_index=True) #append all these dictionaries to the original dataframe
 
     return df
@@ -85,4 +85,27 @@ def log_progress(message):
     timestamp = now.strftime(timestamp_format) 
     with open("./etl_project_log.txt","a") as f: 
         f.write(timestamp + ',' + message + '\n') 
+
+
+df = extract(url, table_attribs)
+log_progress('Data extraction complete.')
+
+df = transform(df)
+log_progress('Data transformation complete.')
+            
+load_to_csv(df, csv_path)
+log_progress('Data saved to CSV file')
+
+conn =  sqlite3.connect('World_Economies.db')
+log_progress('SQL Connection initiated.')
+
+load_to_db(df, conn, table_name)
+log_progress('Data loaded to Database as table.')
+
+query_statement = f"SELECT * from {table_name} WHERE GDP_USD_billions >= 100"
+run_query(query_statement, conn)
+log_progress('Process Complete.')
+
+conn.close()
+
 

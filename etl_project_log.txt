@@ -1,0 +1,12 @@
+2023-Nov-07-15:58:19,Data extraction complete.
+2023-Nov-07-15:58:19,Data transformation complete.
+2023-Nov-07-15:58:19,Data saved to CSV file
+2023-Nov-07-15:58:19,SQL Connection initiated.
+2023-Nov-07-15:58:19,Data loaded to Database as table.
+2023-Nov-07-15:58:19,Process Complete.
+2023-Nov-07-15:58:35,Data extraction complete.
+2023-Nov-07-15:58:35,Data transformation complete.
+2023-Nov-07-15:58:35,Data saved to CSV file
+2023-Nov-07-15:58:35,SQL Connection initiated.
+2023-Nov-07-15:58:35,Data loaded to Database as table.
+2023-Nov-07-15:58:35,Process Complete.
